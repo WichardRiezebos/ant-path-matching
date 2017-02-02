@@ -21,14 +21,14 @@ Install-Package AntPathMatching
 ## Getting started
 The code below is an example how to use the library.
 
-# Standalone
+### Standalone
 
 ```
 var ant = new Ant("/assets/**/*.js");
 var isMatch = ant.IsMatch("/assets/scripts/vendor/angular.js");
 ```
 
-# Directory
+### Directory
 
 ```
 var ant = new Ant("/assets/**/*.js");
