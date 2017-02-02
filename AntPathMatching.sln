@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntPathMatching", "AntPathMatching\AntPathMatching.csproj", "{2F249775-1C0D-4990-A7C1-2A05D4495CD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntPathMatching.Tests", "AntPatchMatching.Tests\AntPathMatching.Tests.csproj", "{DC997C71-31B0-4095-A24F-C2AEBFE9FEA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F249775-1C0D-4990-A7C1-2A05D4495CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F249775-1C0D-4990-A7C1-2A05D4495CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F249775-1C0D-4990-A7C1-2A05D4495CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F249775-1C0D-4990-A7C1-2A05D4495CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC997C71-31B0-4095-A24F-C2AEBFE9FEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC997C71-31B0-4095-A24F-C2AEBFE9FEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC997C71-31B0-4095-A24F-C2AEBFE9FEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC997C71-31B0-4095-A24F-C2AEBFE9FEA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
