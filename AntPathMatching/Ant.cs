@@ -48,7 +48,7 @@ namespace AntPathMatching
                 pattern = pattern.Replace(kvp.Key, kvp.Value);
             }
 
-            return pattern;
+            return $"{pattern}$";
         }
 
         private static string NormalizePath(string txt) => 
