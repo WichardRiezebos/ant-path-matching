@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace AntPathMatching
 {
     /// <summary>
-    /// Represents a class which matches patch using the ant-style.
+    /// Represents a class which matches path using the ant-style.
     /// </summary>
     [DebuggerDisplay("Pattern = {originalPattern}")]
     public class Ant : IAnt

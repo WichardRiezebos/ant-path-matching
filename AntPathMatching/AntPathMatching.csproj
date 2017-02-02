@@ -45,6 +45,7 @@
     <Compile Include="Ant.cs" />
     <Compile Include="AntDirectory.cs" />
     <Compile Include="IAnt.cs" />
+    <Compile Include="IAntDirectory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

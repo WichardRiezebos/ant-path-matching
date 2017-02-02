@@ -8,7 +8,7 @@ namespace AntPathMatching
     /// <summary>
     /// Represents a class used to match files recusively with ant-style pattern.
     /// </summary>
-    public class AntDirectory
+    public class AntDirectory : IAntDirectory
     {
         private readonly IAnt ant;
 
