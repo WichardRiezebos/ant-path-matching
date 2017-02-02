@@ -18,6 +18,7 @@ namespace AntPathMatching.Tests
         [TestCase("/dir1/*/file.txt", "/dir1/dir1_1/file.txt", true)]
         [TestCase("/dir1/*/file.txt", "/dir1/dir1_1/dir1_2/file.txt", false)]
         [TestCase("/dir1/*/file.txt", "/dir1/dir1_1/dir1_2/file.txtt", false)]
+        [TestCase("*.txt", "/dir1/file.txt", false)]
         public void IsMatch_FromTable_ReturnsExpectedValue(
             string pattern,
             string scenario,
