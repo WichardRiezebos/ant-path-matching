@@ -51,7 +51,7 @@ namespace AntPathMatching
             return $"^{pattern}$";
         }
 
-        private static string NormalizePath(string txt) => 
+        private static string NormalizePath(string txt) =>
             txt.Replace(@"\", "/").Trim('/');
 
         private static IDictionary<string, string> CreateSegments() =>
@@ -61,6 +61,9 @@ namespace AntPathMatching
                 { "**", @"(.+)" },
                 { "*",  @"([^/]+)" },
                 { "?", @"(.)" },
+                { "{", "(" },
+                { "}", ")" },
+                { ",", "|" }
             };
     }
 }
