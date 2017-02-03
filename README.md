@@ -24,7 +24,7 @@ The code below is an example how to use the library.
 ### Standalone
 
 ```
-var ant = new Ant("/assets/**/*.js");
+var ant = new Ant("/assets/**/*.{js,css}");
 var isMatch = ant.IsMatch("/assets/scripts/vendor/angular.js");
 ```
 
