@@ -12,6 +12,6 @@ namespace AntPathMatching
         /// </summary>
         /// <param name="directory">Path to directory to search in.</param>
         /// <returns>Collection of matching files.</returns>
-        IReadOnlyCollection<string> SearchRecursively(string directory);
+        IEnumerable<string> SearchRecursively(string directory);
     }
 }

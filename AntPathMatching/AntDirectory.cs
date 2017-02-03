@@ -29,7 +29,7 @@ namespace AntPathMatching
         /// </summary>
         /// <param name="directory">Path to directory to search in.</param>
         /// <returns>Collection of matching files.</returns>
-        public IReadOnlyCollection<string> SearchRecursively(string directory)
+        public IEnumerable<string> SearchRecursively(string directory)
         {
             var files = Directory
                 .GetFiles(directory, "*", SearchOption.AllDirectories)
