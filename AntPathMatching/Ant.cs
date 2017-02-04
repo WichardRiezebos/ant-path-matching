@@ -8,15 +8,13 @@ namespace AntPathMatching
     /// <summary>
     /// Represents a class which matches path using the ant-style.
     /// </summary>
-    [DebuggerDisplay("Pattern = {originalPattern}")]
+    [DebuggerDisplay("Pattern = {regex}")]
     public class Ant : IAnt
     {
-        private static Lazy<IDictionary<string, string>> segments =
-            new Lazy<IDictionary<string, string>>(() => CreateSegments());
+        private static readonly Lazy<IDictionary<string, string>> segments =
+            new Lazy<IDictionary<string, string>>(CreateSegments);
 
-        private readonly string originalPattern;
-
-        private Regex regex;
+        private readonly Regex regex;
 
         /// <summary>
         /// Initializes a new <see cref="Ant"/>.
@@ -24,8 +22,6 @@ namespace AntPathMatching
         /// <param name="pattern">Ant-style pattern.</param>
         public Ant(string pattern)
         {
-            originalPattern = pattern;
-
             regex = new Regex(
                 TransformPattern(pattern ?? string.Empty),
                 RegexOptions.Singleline
@@ -55,7 +51,7 @@ namespace AntPathMatching
             txt.Replace(@"\", "/").Trim('/');
 
         private static IDictionary<string, string> CreateSegments() =>
-            new Dictionary<string, string>()
+            new Dictionary<string, string>
             {
                 { ".", @"\." },
                 { "**", @"(.+)" },
@@ -63,7 +59,7 @@ namespace AntPathMatching
                 { "?", @"(.)" },
                 { "{", "(" },
                 { "}", ")" },
-                { ",", "|" }
+                { ",", "|" },
             };
     }
 }
