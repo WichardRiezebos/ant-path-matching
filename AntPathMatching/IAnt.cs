@@ -6,10 +6,10 @@
     public interface IAnt
     {
         /// <summary>
-        /// Validates if the input matches the given pattern.
+        /// Validates whether the input matches the given pattern.
         /// </summary>
-        /// <param name="input">Text that needs to be validated.</param>
-        /// <returns>If the input matches the pattern.</returns>
+        /// <param name="input">Path for which to check if it matches the ant-pattern.</param>
+        /// <returns>Whether the input matches the pattern.</returns>
         bool IsMatch(string input);
     }
 }

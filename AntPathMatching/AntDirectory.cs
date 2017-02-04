@@ -24,11 +24,7 @@ namespace AntPathMatching
             this.ant = ant;
         }
 
-        /// <summary>
-        /// Searches all the files in the given directory using the ant-style pattern.
-        /// </summary>
-        /// <param name="directory">Path to directory to search in.</param>
-        /// <returns>Collection of matching files.</returns>
+        /// <inheritDoc />
         public IEnumerable<string> SearchRecursively(string directory)
         {
             var files = Directory
