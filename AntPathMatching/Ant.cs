@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace AntPathMatching
 {
     /// <summary>
-    /// Represents a class which matches path using the ant-style.
+    /// Represents a class which matches paths using ant-style path matching.
     /// </summary>
     [DebuggerDisplay("Pattern = {regex}")]
     public class Ant : IAnt
@@ -28,11 +28,7 @@ namespace AntPathMatching
             );
         }
 
-        /// <summary>
-        /// Validates if the input matches the given pattern.
-        /// </summary>
-        /// <param name="input">Text that needs to be validated.</param>
-        /// <returns>If the input matches the pattern.</returns>
+        /// <inheritdoc/>
         public bool IsMatch(string input) => regex.IsMatch(NormalizePath(input));
 
         private static string TransformPattern(string pattern)
