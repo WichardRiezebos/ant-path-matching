@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace AntPathMatching.Tests
+namespace AntPathMatching
 {
     [TestFixture]
     public class AntTests
