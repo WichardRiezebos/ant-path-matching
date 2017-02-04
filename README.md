@@ -10,13 +10,13 @@ Package for matching paths (files, directories) using the apache ant-style.
 
 ## Installation
 
-Install the NuGet package using the command below,
+Install the NuGet package using the command below:
 
 ```
 Install-Package AntPathMatching
 ```
 
-. . . or search for `AntPathMatching` in the NuGet index.
+...or search for "`AntPathMatching`" in the NuGet index.
 
 ## Getting started
 The code below is an example how to use the library.
