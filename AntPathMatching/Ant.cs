@@ -31,10 +31,9 @@ namespace AntPathMatching
         private static string EscapeAndReplace(string pattern)
         {
             pattern = Regex.Escape(GetUnixPath(pattern))
-                .Replace(@"/\*\*/", "(.*)")
+                .Replace(@"/\*\*/", "(.*[/])")
                 .Replace(@"\*\*/", "(.*)")
                 .Replace(@"/\*\*", "(.*)")
-                .Replace(@"\*\*", "(.*)")
                 .Replace(@"\*", "([^/]*)")
                 .Replace(@"\?", "(.)")
                 .Replace(@"}", ")")
