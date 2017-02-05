@@ -30,7 +30,14 @@ namespace AntPathMatching
 
         private static string EscapeAndReplace(string pattern)
         {
-            pattern = Regex.Escape(GetUnixPath(pattern))
+            var unix = GetUnixPath(pattern);
+
+            if (unix.EndsWith("/"))
+            {
+                unix += "**";
+            }
+
+            pattern = Regex.Escape(unix)
                 .Replace(@"/\*\*/", "(.*[/])")
                 .Replace(@"\*\*/", "(.*)")
                 .Replace(@"/\*\*", "(.*)")
@@ -43,7 +50,7 @@ namespace AntPathMatching
             return $"^{pattern}$";
         }
 
-        private static string GetUnixPath(string txt) =>
-            txt.Replace(@"\", "/").Trim('/');
+        private static string GetUnixPath(string txt) => 
+            txt.Replace(@"\", "/").TrimStart('/');
     }
 }

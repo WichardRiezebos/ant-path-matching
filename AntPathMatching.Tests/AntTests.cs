@@ -54,6 +54,7 @@ namespace AntPathMatching
         [TestCase("**/test/**", "test", true)]
         [TestCase("**/test/**", "test.png", true)]
         [TestCase("**/test/**/file.png", "testfile.png", false)]
+        [TestCase("mypackage/test/", "mypackage/test/file.png", true)]
         public void Matcher_WhenGivenExamplesFromApacheDocs_ReturnsExpected(
             string pattern,
             string input,

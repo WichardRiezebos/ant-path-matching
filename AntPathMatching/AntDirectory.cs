@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace AntPathMatching
 {
@@ -27,14 +26,17 @@ namespace AntPathMatching
         /// <inheritDoc />
         public IEnumerable<string> SearchRecursively(string directory)
         {
-            var files = Directory
-                .GetFiles(directory, "*", SearchOption.AllDirectories)
-                .Select(f => f.Replace(directory, string.Empty))
-                .ToList();
+            var files = Directory.GetFiles(directory, "*", SearchOption.AllDirectories);
+         
+            foreach(var file in files)
+            {
+                var actualFile = file.Replace(directory, string.Empty);
 
-            return files
-                .Where(ant.IsMatch)
-                .ToList();
+                if (ant.IsMatch(actualFile))
+                {
+                    yield return actualFile;
+                }
+            }
         }
     }
 }
