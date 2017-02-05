@@ -8,6 +8,10 @@ Package for matching paths (files, directories) using the apache ant-style.
 | **NuGet** | [![NuGet](https://buildstats.info/nuget/AntPathMatching)](https://www.nuget.org/packages/AntPathMatching/) |
 | **Gitter** | [![Join the chat at https://gitter.im/ant-path-matching/Lobby](https://badges.gitter.im/ant-path-matching/Lobby.svg)](https://gitter.im/ant-path-matching/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
 
+## Prerequisites
+
+- .NET Framework 2.0
+
 ## Installation
 
 Install the NuGet package using the command below:
