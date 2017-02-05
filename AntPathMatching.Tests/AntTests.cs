@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Text.RegularExpressions;
 
 namespace AntPathMatching
 {
@@ -33,6 +34,34 @@ namespace AntPathMatching
             var match = ant.IsMatch(scenario);
 
             Assert.That(match, Is.EqualTo(expected));
+        }
+
+        [Description("See also http://ant.apache.org/manual/dirtasks.html#patterns")]
+        // CVS Examples
+        [TestCase("**/CVS/*", "CVS/Repository", true)]
+        [TestCase("**/CVS/*", "org/apache/CVS/Entries", true)]
+        [TestCase("**/CVS/*", "org/apache/jakarta/tools/ant/CVS/Entries", true)]
+        [TestCase("**/CVS/*", " org/apache/CVS/foo/bar/Entries", false)]
+        // Jakarta examples
+        [TestCase("org/apache/jakarta/**", "org/apache/jakarta/tools/ant/docs/index.html", true)]
+        [TestCase("org/apache/jakarta/**", "org/apache/jakarta/test.xml", true)]
+        [TestCase("org/apache/jakarta/**", "org/apache/xyz.java", false)]
+        // CVS with prefix path examples
+        [TestCase("org/apache/**/CVS/*", "org/apache/CVS/Entries", true)]
+        [TestCase("org/apache/**/CVS/*", "org/apache/jakarta/tools/ant/CVS/Entries", true)]
+        [TestCase("org/apache/**/CVS/*", "org/apache/CVS/foo/bar/Entries", false)]
+        // Test examples
+        [TestCase("**/test/**", "test", true)]
+        [TestCase("**/test/**", "test.png", true)]
+        public void Matcher_WhenGivenExamplesFromApacheDocs_ReturnsExpected(
+            string pattern,
+            string input,
+            bool shouldMatch)
+        {
+            var matcher = new Ant(pattern);
+            var result = matcher.IsMatch(input);
+
+            Assert.That(result, Is.EqualTo(shouldMatch));
         }
     }
 }

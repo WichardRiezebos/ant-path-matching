@@ -11,9 +11,6 @@ namespace AntPathMatching
     [DebuggerDisplay("Pattern = {regex}")]
     public class Ant : IAnt
     {
-        private static readonly Lazy<IDictionary<string, string>> segments =
-            new Lazy<IDictionary<string, string>>(CreateSegments);
-
         private readonly Regex regex;
 
         /// <summary>
@@ -23,39 +20,31 @@ namespace AntPathMatching
         public Ant(string pattern)
         {
             regex = new Regex(
-                TransformPattern(pattern ?? string.Empty),
+                EscapeAndReplace(pattern ?? string.Empty),
                 RegexOptions.Singleline
             );
         }
 
         /// <inheritdoc/>
-        public bool IsMatch(string input) => regex.IsMatch(NormalizePath(input));
+        public bool IsMatch(string input) => regex.IsMatch(GetUnixPath(input));
 
-        private static string TransformPattern(string pattern)
+        private static string EscapeAndReplace(string pattern)
         {
-            pattern = NormalizePath(pattern);
-
-            foreach (var kvp in segments.Value)
-            {
-                pattern = pattern.Replace(kvp.Key, kvp.Value);
-            }
+            pattern = Regex.Escape(GetUnixPath(pattern))
+                .Replace(@"/\*\*/", "(.*)")
+                .Replace(@"\*\*/", "(.*)")
+                .Replace(@"/\*\*", "(.*)")
+                .Replace(@"\*\*", "(.*)")
+                .Replace(@"\*", "([^/]*)")
+                .Replace(@"\?", "(.)")
+                .Replace(@"}", ")")
+                .Replace(@"\{", "(")
+                .Replace(@",", "|");
 
             return $"^{pattern}$";
         }
 
-        private static string NormalizePath(string txt) =>
+        private static string GetUnixPath(string txt) =>
             txt.Replace(@"\", "/").Trim('/');
-
-        private static IDictionary<string, string> CreateSegments() =>
-            new Dictionary<string, string>
-            {
-                { ".", @"\." },
-                { "**", @"(.+)" },
-                { "*",  @"([^/]+)" },
-                { "?", @"(.)" },
-                { "{", "(" },
-                { "}", ")" },
-                { ",", "|" },
-            };
     }
 }
