@@ -36,7 +36,7 @@ using AntPathMatching;
 ...
 var ant = new Ant("/assets/**/*.js");
 var antDir = new AntDirectory(ant);
-var matchingFiles = ant.SearchRecursively("C:\directory\");
+var matchingFiles = ant.SearchRecursively("C:\directory\", includeDirectoryPath: false);
 ```
 
 #### Dependency Injection
