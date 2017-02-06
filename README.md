@@ -23,6 +23,8 @@ The code below is an example how to use the library.
 #### Standalone match
 
 ```
+using AntPathMatching;
+...
 var ant = new Ant("/assets/**/*.{js,css}");
 var isMatch = ant.IsMatch("/assets/scripts/vendor/angular.js");
 ```
@@ -30,7 +32,23 @@ var isMatch = ant.IsMatch("/assets/scripts/vendor/angular.js");
 #### Recursive match
 
 ```
+using AntPathMatching;
+...
 var ant = new Ant("/assets/**/*.js");
 var antDir = new AntDirectory(ant);
 var matchingFiles = ant.SearchRecursively("C:\directory\");
+```
+
+#### Dependency Injection
+
+```
+using AntPathMatching;
+...
+constructor(
+	IAntFactory antFactory,				
+	IAntDirectoryFactory antDirectoryFactory
+) {
+	var ant = antFactory.CreateNew("/assets/**/*.js");
+	var antDir = antDirectoryFactory.CreateNew(ant);
+}
 ```
