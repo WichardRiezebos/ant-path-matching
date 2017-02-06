@@ -15,7 +15,7 @@ namespace AntPathMatching
         /// Initializes a new <see cref="AntDirectory"/>.
         /// </summary>
         /// <param name="ant">Ant pattern used for directory-searching.</param>
-        /// <exception cref="ArgumentNullException">Throw when <paramref name="ant"/>is null.</exception>
+        /// <exception cref="ArgumentNullException">Throw when <paramref name="ant"/> is null.</exception>
         public AntDirectory(IAnt ant)
         {
             if (ant == null) throw new ArgumentNullException(nameof(ant));
@@ -23,6 +23,11 @@ namespace AntPathMatching
             this.ant = ant;
         }
 
+        /// <summary>
+        /// Searches all the files in the given directory using the ant-style pattern.
+        /// </summary>
+        /// <param name="directory">Path to directory to search in.</param>
+        /// <returns>Collection of matching files.</returns>
         /// <inheritDoc />
         public IEnumerable<string> SearchRecursively(string directory)
         {

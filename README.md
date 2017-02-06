@@ -1,12 +1,7 @@
 # Ant Path Matching
- 
-Package for matching paths (files, directories) using the apache ant-style.
+[![Build status](https://ci.appveyor.com/api/projects/status/dh8kgx9rooyx6i40?svg=true)](https://ci.appveyor.com/project/WichardRiezebos/ant-path-matching) [![NuGet](https://buildstats.info/nuget/AntPathMatching)](https://www.nuget.org/packages/AntPathMatching/) [![Join the chat at https://gitter.im/ant-path-matching/Lobby](https://badges.gitter.im/ant-path-matching/Lobby.svg)](https://gitter.im/ant-path-matching/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-| | |
-| --- | --- |
-| **Build** | [![Build status](https://ci.appveyor.com/api/projects/status/dh8kgx9rooyx6i40?svg=true)](https://ci.appveyor.com/project/WichardRiezebos/ant-path-matching) |
-| **NuGet** | [![NuGet](https://buildstats.info/nuget/AntPathMatching)](https://www.nuget.org/packages/AntPathMatching/) |
-| **Gitter** | [![Join the chat at https://gitter.im/ant-path-matching/Lobby](https://badges.gitter.im/ant-path-matching/Lobby.svg)](https://gitter.im/ant-path-matching/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
+Package for matching paths (files, directories) using the apache ant-style.
 
 ## Prerequisites
 
@@ -25,14 +20,14 @@ Install-Package AntPathMatching
 ## Getting started
 The code below is an example how to use the library.
 
-### Standalone
+#### Standalone match
 
 ```
 var ant = new Ant("/assets/**/*.{js,css}");
 var isMatch = ant.IsMatch("/assets/scripts/vendor/angular.js");
 ```
 
-### Directory
+#### Recursive match
 
 ```
 var ant = new Ant("/assets/**/*.js");

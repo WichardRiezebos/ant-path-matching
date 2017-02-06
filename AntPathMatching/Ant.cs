@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace AntPathMatching
@@ -25,6 +23,11 @@ namespace AntPathMatching
             );
         }
 
+        /// <summary>
+        /// Validates whether the input matches the given pattern.
+        /// </summary>
+        /// <param name="input">Path for which to check if it matches the ant-pattern.</param>
+        /// <returns>Whether the input matches the pattern.</returns>
         /// <inheritdoc/>
         public bool IsMatch(string input) => regex.IsMatch(GetUnixPath(input));
 
