@@ -27,19 +27,22 @@ namespace AntPathMatching
         /// Searches all the files in the given directory using the ant-style pattern.
         /// </summary>
         /// <param name="directory">Path to directory to search in.</param>
+        /// <param name="includeDirectoryPath">Indicates if the returned paths must include the directory.</param>
         /// <returns>Collection of matching files.</returns>
         /// <inheritDoc />
-        public IEnumerable<string> SearchRecursively(string directory)
+        public IEnumerable<string> SearchRecursively(string directory, bool includeDirectoryPath = false)
         {
             var files = Directory.GetFiles(directory, "*", SearchOption.AllDirectories);
-         
-            foreach(var file in files)
+
+            foreach (var file in files)
             {
                 var actualFile = file.Replace(directory, string.Empty);
 
                 if (ant.IsMatch(actualFile))
                 {
-                    yield return actualFile;
+                    yield return (includeDirectoryPath
+                        ? file
+                        : actualFile);
                 }
             }
         }
