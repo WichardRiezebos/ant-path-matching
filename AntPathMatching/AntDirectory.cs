@@ -32,7 +32,9 @@ namespace AntPathMatching
         /// <inheritDoc />
         public IEnumerable<string> SearchRecursively(string directory, bool includeDirectoryPath = false)
         {
-            var files = Directory.GetFiles(directory, "*", SearchOption.AllDirectories);
+            var files = Directory.Exists(directory) ?
+                    Directory.GetFiles(directory, "*", SearchOption.AllDirectories)
+                    : new string[0];
 
             foreach (var file in files)
             {

@@ -40,5 +40,13 @@ namespace AntPathMatching
                 Assert.That(match.FirstOrDefault(), Does.Not.Contain(dirPath));
             }
         }
+
+        [Test]
+        public void SearchRecursively_WhenDirectoryNotFound_DoesNotThrow()
+        {
+            var ant = new AntDirectory(new Ant("*.txt"));
+
+            Assert.DoesNotThrow(() => ant.SearchRecursively(@"C:\Octopus\Applications\production\Containers").ToList());
+        }
     }
 }
