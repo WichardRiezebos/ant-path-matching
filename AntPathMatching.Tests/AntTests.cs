@@ -6,6 +6,7 @@ namespace AntPathMatching
     [TestFixture]
     public class AntTests
     {
+        [TestCase("/dir1/**/*.txt", "/dir1/dir2/dir3/file1.zip", false)]
         [TestCase("/dir1/**/*.txt", "/dir1/dir2/dir3/file1.txt", true)]
         [TestCase("/dir1/**/*.txt", "/dir1/dir2/dir3/file1.zip", false)]
         [TestCase("/dir1/dir2/**/*.txt", "/dir1/dir2/dir3/file1.txt", true)]
@@ -25,6 +26,20 @@ namespace AntPathMatching
         [TestCase("*.{txt,zip}", "file.txt", true)]
         [TestCase("*.{txt,zip}", "file.zip", true)]
         [TestCase("*.{txt,zip}", "file.docx", false)]
+        [TestCase("/dir1/dir2/dir3/file1.txt", "/dir1/dir2/dir3/file1.txt", true)]
+        [TestCase("/dir?/dir2/dir3/file1.txt", "/dir1/dir2/dir3/file1.txt", true)]
+        [TestCase("/dir??/dir2/dir3/file1.txt", "/dir1/dir2/dir3/file1.txt", false)]
+        [TestCase("/dir??/dir2/dir3/file1.txt", "/dir01/dir2/dir3/file1.txt", true)]
+        [TestCase("file1.txt", "file1.txt", true)]
+        [TestCase("file??.txt", "file12.txt", true)]
+        [TestCase("*.*", "file", false)]
+        [TestCase("*", "file", true)]
+        [TestCase("**/*", "/dir1/dir2/dir3/file1.txt", true)]
+        [TestCase("**", "file", true)]
+        [TestCase("**/", "file", true)]
+        [TestCase("**/*", "file", true)]
+        [TestCase("*/*", "file", false)]
+        [TestCase("*", "/dir1/dir2/dir3/file1.txt", false)]
         public void IsMatch_FromTable_ReturnsExpectedValue(
             string pattern,
             string scenario,
