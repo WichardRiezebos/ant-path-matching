@@ -6,9 +6,11 @@ namespace AntPathMatching
     /// <summary>
     /// Represents a class which matches paths using ant-style path matching.
     /// </summary>
+    /// <seealso cref="AntPathMatching.IAnt" />
     [DebuggerDisplay("Pattern = {regex}")]
     public class Ant : IAnt
     {
+        private readonly string originalPattern;
         private readonly Regex regex;
 
         /// <summary>
@@ -17,8 +19,9 @@ namespace AntPathMatching
         /// <param name="pattern">Ant-style pattern.</param>
         public Ant(string pattern)
         {
+            originalPattern = pattern ?? string.Empty;
             regex = new Regex(
-                EscapeAndReplace(pattern ?? string.Empty),
+                EscapeAndReplace(originalPattern),
                 RegexOptions.Singleline
             );
         }
@@ -55,5 +58,13 @@ namespace AntPathMatching
 
         private static string GetUnixPath(string txt) => 
             txt.Replace(@"\", "/").TrimStart('/');
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString() => originalPattern;
     }
 }
