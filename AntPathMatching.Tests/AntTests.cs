@@ -48,6 +48,7 @@ namespace AntPathMatching
             var ant = new Ant(pattern);
             var match = ant.IsMatch(scenario);
 
+            Assert.That(ant.ToString(), Is.EqualTo(pattern));
             Assert.That(match, Is.EqualTo(expected));
         }
 
@@ -78,6 +79,7 @@ namespace AntPathMatching
             var matcher = new Ant(pattern);
             var result = matcher.IsMatch(input);
 
+            Assert.That(matcher.ToString(), Is.EqualTo(pattern));
             Assert.That(result, Is.EqualTo(shouldMatch));
         }
     }
