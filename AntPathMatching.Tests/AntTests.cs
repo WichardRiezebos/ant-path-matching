@@ -6,6 +6,13 @@ namespace AntPathMatching
     [TestFixture]
     public class AntTests
     {
+        [Test]
+        public void NullInput_ThrowsNothing()
+        {
+            var ant = new Ant("*");
+            Assert.That(() => ant.IsMatch(null), Throws.Nothing);
+        }
+
         [TestCase("/dir1/**/*.txt", "/dir1/dir2/dir3/file1.zip", false)]
         [TestCase("/dir1/**/*.txt", "/dir1/dir2/dir3/file1.txt", true)]
         [TestCase("/dir1/**/*.txt", "/dir1/dir2/dir3/file1.zip", false)]
