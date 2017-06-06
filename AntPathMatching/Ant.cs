@@ -32,7 +32,11 @@ namespace AntPathMatching
         /// <param name="input">Path for which to check if it matches the ant-pattern.</param>
         /// <returns>Whether the input matches the pattern.</returns>
         /// <inheritdoc/>
-        public bool IsMatch(string input) => regex.IsMatch(GetUnixPath(input));
+        public bool IsMatch(string input)
+        {
+            input = input ?? string.Empty;
+            return regex.IsMatch(GetUnixPath(input));
+        }
 
         private static string EscapeAndReplace(string pattern)
         {
@@ -56,8 +60,7 @@ namespace AntPathMatching
             return $"^{pattern}$";
         }
 
-        private static string GetUnixPath(string txt) => 
-            txt.Replace(@"\", "/").TrimStart('/');
+        private static string GetUnixPath(string txt) => txt.Replace(@"\", "/").TrimStart('/');
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
