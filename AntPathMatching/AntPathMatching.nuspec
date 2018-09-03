@@ -10,5 +10,8 @@
     <projectUrl>https://github.com/WichardRiezebos/ant-path-matching</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/WichardRiezebos/ant-path-matching/master/icon.png</iconUrl>
     <tags>ant path matching directory regex search recursive files</tags>
+    <dependencies>
+      <dependency id="System.IO.Abstractions" version="[2.1.0.228,3.0.0.0)" />
+     </dependencies>
   </metadata>
 </package>
