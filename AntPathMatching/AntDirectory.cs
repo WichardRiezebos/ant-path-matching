@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions;
 
 namespace AntPathMatching
 {
@@ -10,17 +11,20 @@ namespace AntPathMatching
     public class AntDirectory : IAntDirectory
     {
         private readonly IAnt ant;
+        private IFileSystem fileSystem;
 
         /// <summary>
         /// Initializes a new <see cref="AntDirectory"/>.
         /// </summary>
         /// <param name="ant">Ant pattern used for directory-searching.</param>
+        /// <param name="fileSystem">File system to be used</param>
         /// <exception cref="ArgumentNullException">Throw when <paramref name="ant"/> is null.</exception>
-        public AntDirectory(IAnt ant)
+        public AntDirectory(IAnt ant, IFileSystem fileSystem = null)
         {
             if (ant == null) throw new ArgumentNullException(nameof(ant));
 
             this.ant = ant;
+            this.fileSystem = fileSystem ?? new FileSystem();
         }
 
         /// <summary>
@@ -32,8 +36,8 @@ namespace AntPathMatching
         /// <inheritDoc />
         public IEnumerable<string> SearchRecursively(string directory, bool includeDirectoryPath = false)
         {
-            var files = Directory.Exists(directory) ?
-                    Directory.GetFiles(directory, "*", SearchOption.AllDirectories)
+            var files = fileSystem.Directory.Exists(directory) ?
+                fileSystem.Directory.GetFiles(directory, "*", SearchOption.AllDirectories)
                     : new string[0];
 
             foreach (var file in files)
