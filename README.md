@@ -1,23 +1,16 @@
 # Ant Path Matching
-[![Build status](https://ci.appveyor.com/api/projects/status/dh8kgx9rooyx6i40?svg=true)](https://ci.appveyor.com/project/WichardRiezebos/ant-path-matching) [![NuGet](https://buildstats.info/nuget/AntPathMatching)](https://www.nuget.org/packages/AntPathMatching/) [![Join the chat at https://gitter.im/ant-path-matching/Lobby](https://badges.gitter.im/ant-path-matching/Lobby.svg)](https://gitter.im/ant-path-matching/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Package for matching paths (files, directories) using the apache ant-style.
 
-## Prerequisites
+Supports .NET Standard 2.0
 
-- .NET Framework 2.0
+### Acknowledgement
 
-## Installation
-
-Install the NuGet package using the command below:
-
-```
-Install-Package AntPathMatching
-```
-
-...or search for "`AntPathMatching`" in the NuGet index.
+This has been forked from [WichardRiezebos/ant-path-matching](https://github.com/WichardRiezebos/ant-path-matching)
+and updated to target .NET Standard 2.0.
 
 ## Getting started
+
 The code below is an example how to use the library.
 
 #### Standalone match
