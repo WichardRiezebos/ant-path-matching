@@ -23,8 +23,8 @@ namespace AntPathMatching
 
             // Assert
             files.Should().HaveCount(2);
-            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt", null));
-            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt", null));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt"));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt"));
         }
 
         [Test]
@@ -55,8 +55,8 @@ namespace AntPathMatching
 
             // Assert
             files.Should().HaveCount(2);
-            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt", null));
-            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt", null));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt"));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt"));
         }
 
         [Test]
@@ -87,9 +87,9 @@ namespace AntPathMatching
 
             // Assert
             files.Should().HaveCount(3);
-            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt", null));
-            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt", null));
-            files.Should().Contain(f => f == XFS.Path(@"assets\dir2\file2.zip", null));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt"));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt"));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir2\file2.zip"));
         }
 
         private static MockFileSystem CreateMockFileSystem()

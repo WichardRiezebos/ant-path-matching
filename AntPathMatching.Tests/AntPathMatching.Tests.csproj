@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="5.4.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
-    <PackageReference Include="NFluent" Version="2.4.0" />
-    <PackageReference Include="NUnit" Version="3.11.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
-    <PackageReference Include="System.IO.Abstractions" Version="2.1.0.256" />
-    <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="2.1.0.256" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageReference Include="NFluent" Version="2.7.2" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+    <PackageReference Include="System.IO.Abstractions" Version="13.2.31" />
+    <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="13.2.31" />
   </ItemGroup>
 
   <ItemGroup>
