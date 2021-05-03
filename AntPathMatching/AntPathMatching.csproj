@@ -2,10 +2,15 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <Version>1.0.35</Version>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <Product>CoderPatros.AntPathMatching</Product>
+    <Authors>Patrick Dwyer &amp; original AntPathMatching authors</Authors>
+    <Copyright>Copyright 2017 Wichard Riezebos</Copyright>
+    <Description>A .NET Standard library package for matching paths (files, directories) using the apache ant-style.</Description>
+    <PackageId>CoderPatros.AntPathMatching</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/coderpatros/ant-path-matching</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/coderpatros/ant-path-matching.git</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
