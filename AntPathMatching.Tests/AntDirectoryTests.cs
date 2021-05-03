@@ -3,6 +3,7 @@ using System;
 using System.IO.Abstractions.TestingHelpers;
 using System.Linq;
 using FluentAssertions;
+using XFS = System.IO.Abstractions.TestingHelpers.MockUnixSupport;
 
 namespace AntPathMatching
 {
@@ -18,12 +19,12 @@ namespace AntPathMatching
             var ant = new AntDirectory(new Ant("/assets/**/*.txt"), mockFileSystem);
 
             // Act
-            var files = ant.SearchRecursively(@"C:\").ToList();
+            var files = ant.SearchRecursively(XFS.Path(@"C:\")).ToList();
 
             // Assert
             files.Should().HaveCount(2);
-            files.Should().Contain(f => f == @"assets\dir1\dir1_1\file1.txt");
-            files.Should().Contain(f => f == @"assets\dir1\dir1_1\file2.txt");
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt", null));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt", null));
         }
 
         [Test]
@@ -35,7 +36,7 @@ namespace AntPathMatching
             var ant = new AntDirectory(new Ant("/assets/**/*.xml"), mockFileSystem);
 
             // Act
-            var files = ant.SearchRecursively(@"C:\");
+            var files = ant.SearchRecursively(XFS.Path(@"C:\"));
 
             // Assert
             files.Should().BeEmpty();
@@ -50,12 +51,12 @@ namespace AntPathMatching
             var ant = new AntDirectory(new Ant("/assets/dir1/*/file?.txt"), mockFileSystem);
 
             // Act
-            var files = ant.SearchRecursively(@"C:\").ToList();
+            var files = ant.SearchRecursively(XFS.Path(@"C:\")).ToList();
 
             // Assert
             files.Should().HaveCount(2);
-            files.Should().Contain(f => f == @"assets\dir1\dir1_1\file1.txt");
-            files.Should().Contain(f => f == @"assets\dir1\dir1_1\file2.txt");
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt", null));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt", null));
         }
 
         [Test]
@@ -67,7 +68,7 @@ namespace AntPathMatching
             var ant = new AntDirectory(new Ant("/assets/dir1/*/file???.txt"), mockFileSystem);
 
             // Act
-            var files = ant.SearchRecursively(@"C:\");
+            var files = ant.SearchRecursively(XFS.Path(@"C:\"));
 
             // Assert
             files.Should().BeEmpty();
@@ -82,21 +83,21 @@ namespace AntPathMatching
             var ant = new AntDirectory(new Ant("/assets/**/*.*"), mockFileSystem);
 
             // Act
-            var files = ant.SearchRecursively(@"C:\").ToList();
+            var files = ant.SearchRecursively(XFS.Path(@"C:\")).ToList();
 
             // Assert
             files.Should().HaveCount(3);
-            files.Should().Contain(f => f == @"assets\dir1\dir1_1\file1.txt");
-            files.Should().Contain(f => f == @"assets\dir1\dir1_1\file2.txt");
-            files.Should().Contain(f => f == @"assets\dir2\file2.zip");
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file1.txt", null));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir1\dir1_1\file2.txt", null));
+            files.Should().Contain(f => f == XFS.Path(@"assets\dir2\file2.zip", null));
         }
 
         private static MockFileSystem CreateMockFileSystem()
         {
             var mockFileSystem = new MockFileSystem();
-            mockFileSystem.AddFile(@"C:\assets\dir1\dir1_1\file1.txt", new MockFileData("data"));
-            mockFileSystem.AddFile(@"C:\assets\dir1\dir1_1\file2.txt", new MockFileData("data"));
-            mockFileSystem.AddFile(@"C:\assets\dir2\file2.zip", new MockFileData("data"));
+            mockFileSystem.AddFile(XFS.Path(@"C:\assets\dir1\dir1_1\file1.txt"), new MockFileData("data"));
+            mockFileSystem.AddFile(XFS.Path(@"C:\assets\dir1\dir1_1\file2.txt"), new MockFileData("data"));
+            mockFileSystem.AddFile(XFS.Path(@"C:\assets\dir2\file2.zip"), new MockFileData("data"));
             return mockFileSystem;
         }
 
@@ -105,15 +106,15 @@ namespace AntPathMatching
             bool includeDirectoryPath)
         {
             var ant = new AntDirectory(new Ant("/assets/dir1/*/file?.txt"), CreateMockFileSystem());
-            var match = ant.SearchRecursively(@"C:\", includeDirectoryPath);
+            var match = ant.SearchRecursively(XFS.Path(@"C:\"), includeDirectoryPath);
 
             if (includeDirectoryPath)
             {
-                match.First().Should().StartWith(@"C:\");
+                match.First().Should().StartWith(XFS.Path(@"C:\"));
             }
             else
             {
-                match.First().Should().NotStartWith(@"C:\");
+                match.First().Should().NotStartWith(XFS.Path(@"C:\"));
             }
         }
 
@@ -122,7 +123,7 @@ namespace AntPathMatching
         {
             var ant = new AntDirectory(new Ant("*.txt"), new MockFileSystem());
 
-            Assert.DoesNotThrow(() => ant.SearchRecursively(@"C:\Octopus\Applications\production\Containers").ToList());
+            Assert.DoesNotThrow(() => ant.SearchRecursively(XFS.Path(@"C:\Octopus\Applications\production\Containers")).ToList());
         }
     }
 }

@@ -42,7 +42,7 @@ namespace AntPathMatching
 
             foreach (var file in files)
             {
-                var actualFile = file.Replace(directory, string.Empty);
+                var actualFile = file.Substring(directory.Length);
 
                 if (ant.IsMatch(actualFile))
                 {
